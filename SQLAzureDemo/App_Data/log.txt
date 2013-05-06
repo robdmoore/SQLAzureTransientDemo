@@ -1,0 +1,211 @@
+05/06/2013 22:20:03 +08:00 [Information] asdf
+05/06/2013 22:20:03 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:20:03 +08:00 [Information] No new scripts need to be executed - completing.
+05/06/2013 22:25:13 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:25:13 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:25:27 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.InvalidOperationException: An invalid request URI was provided. The request URI must either be an absolute URI or BaseAddress must be set.
+   at System.Net.Http.HttpClient.PrepareRequestMessage(HttpRequestMessage request)
+   at System.Net.Http.HttpClient.SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetAsync(Uri requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetContentAsync[T](Uri requestUri, HttpCompletionOption completionOption, T defaultValue, Func`2 readAs)
+   at System.Net.Http.HttpClient.GetStringAsync(Uri requestUri)
+   at System.Net.Http.HttpClient.GetStringAsync(String requestUri)
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 15
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:26:59 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:27:00 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:27:36 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonTextReader.ReadInternal()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 16
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:27:54 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:27:54 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:28:47 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonTextReader.ReadInternal()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 17
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:28:57 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:28:57 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:30:00 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.InvalidCastException: The SqlParameterCollection only accepts non-null SqlParameter type objects, not String objects.
+   at System.Data.SqlClient.SqlParameterCollection.ValidateType(Object value)
+   at System.Data.SqlClient.SqlParameterCollection.Add(Object value)
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 27
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:30:27 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:30:27 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:30:50 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.InvalidCastException: The SqlParameterCollection only accepts non-null SqlParameter type objects, not String objects.
+   at System.Data.SqlClient.SqlParameterCollection.ValidateType(Object value)
+   at System.Data.SqlClient.SqlParameterCollection.Add(Object value)
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 33
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:33:24 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:33:24 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:33:44 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.InvalidOperationException: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+   at System.Data.SqlClient.SqlCommand.ValidateCommand(String method, Boolean async)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 34
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:34:02 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:34:02 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:34:49 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '@title1'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 35
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()
+ClientConnectionId:4f697410-811b-44a9-bfb5-3a1b791777e5"
+05/06/2013 22:35:04 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:35:04 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:36:37 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Movie'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.ProvideScript(IDbConnection connection) in c:\Users\Robert\Documents\Visual Studio 2012\Projects\robdmoore\SQLAzureDemo\SQLAzureDemo\Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs:line 37
+   at DbUp.ScriptProviders.EmbeddedScriptAndCodeProvider.<>c__DisplayClass3.<>c__DisplayClass5.<ScriptsFromScriptClasses>b__2()
+   at DbUp.Engine.LazySqlScript.get_Contents()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()
+ClientConnectionId:fec9745f-1351-4501-ab5a-add8968d6135"
+05/06/2013 22:36:59 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:36:59 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180700_CreateMovieTable.sql"'
+05/06/2013 22:36:59 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:37:01 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DbUp.Engine.Preprocessors.StripSchemaPreprocessor.Process(String contents)
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:42:48 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:42:48 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:43:05 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DbUp.Engine.Preprocessors.StripSchemaPreprocessor.Process(String contents)
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:45:04 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:45:04 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180700_CreateMovieTable.sql"'
+05/06/2013 22:45:04 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:45:11 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:46:49 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:46:49 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180700_CreateMovieTable.sql"'
+05/06/2013 22:46:49 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:47:24 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DbUp.Engine.Preprocessors.StripSchemaPreprocessor.Process(String contents)
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 22:51:24 +08:00 [Information] Beginning database upgrade
+05/06/2013 22:51:24 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 22:51:56 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()"
+05/06/2013 23:06:41 +08:00 [Information] Beginning database upgrade
+05/06/2013 23:06:41 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 23:06:41 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130605224800_MultiplyNumberOfMovies.sql"'
+05/06/2013 23:07:11 +08:00 [Information] SQL exception has occured in script: '"SQLAzureDemo.Database.Migrations.Migration20130605224800_MultiplyNumberOfMovies.sql"'
+05/06/2013 23:07:11 +08:00 [Error] Script block number: 0; Block line 0; Message: ""
+05/06/2013 23:07:11 +08:00 [Error] System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+ClientConnectionId:e7019a37-e9ea-4fea-9929-771f34f594fe
+05/06/2013 23:07:11 +08:00 [Error] Upgrade failed due to an unexpected exception:
+"System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DbUp.Support.SqlServer.SqlScriptExecutor.Execute(SqlScript script, IDictionary`2 variables)
+   at DbUp.Engine.UpgradeEngine.PerformUpgrade()
+ClientConnectionId:e7019a37-e9ea-4fea-9929-771f34f594fe"
+05/06/2013 23:08:38 +08:00 [Information] Beginning database upgrade
+05/06/2013 23:08:38 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180700_CreateMovieTable.sql"'
+05/06/2013 23:08:38 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130505180800_PopulateMoviesTable.cs"'
+05/06/2013 23:09:11 +08:00 [Information] Executing SQL Server script '"SQLAzureDemo.Database.Migrations.Migration20130605224800_MultiplyNumberOfMovies.sql"'
+05/06/2013 23:09:13 +08:00 [Information] Upgrade successful
