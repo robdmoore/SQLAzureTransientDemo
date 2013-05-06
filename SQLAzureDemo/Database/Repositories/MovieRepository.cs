@@ -1,4 +1,8 @@
-﻿using NHibernate;
+﻿using System;
+using System.Linq;
+using NHibernate;
+using NHibernate.Linq;
+using SQLAzureDemo.Database.Models;
 
 namespace SQLAzureDemo.Database.Repositories
 {
@@ -18,7 +22,14 @@ namespace SQLAzureDemo.Database.Repositories
 
         public MovieSearchResult Search(string searchText)
         {
-            return new MovieSearchResult {AverageYearOfCreation = 2005, NumberOfMovies = 100, SearchTerm = searchText};
+            var avg = _session.Query<Movie>()
+                .Where(m => m.Title.Contains(searchText))
+                .Average(m => m.Year);
+
+            var count = _session.Query<Movie>()
+                .Count(m => m.Title.Contains(searchText));
+
+            return new MovieSearchResult {AverageYearOfCreation = Convert.ToInt32(avg), NumberOfMovies = count, SearchTerm = searchText};
         }
     }
 
