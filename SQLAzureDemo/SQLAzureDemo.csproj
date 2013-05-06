@@ -150,6 +150,7 @@
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\Autofac\NHibernateModule.cs" />
+    <Compile Include="App_Start\Autofac\RepositoryModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NHibernate\NHibernateConfiguration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs" />
     <Compile Include="Database\Migrations\Migrate.cs" />
     <Compile Include="Database\Models\Movie.cs" />
+    <Compile Include="Database\Repositories\MovieRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,7 +174,6 @@
     <EmbeddedResource Include="Database\Migrations\Migration20130505180700_CreateMovieTable.sql" />
     <EmbeddedResource Include="Database\Migrations\Migration20130605224800_MultiplyNumberOfMovies.sql" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -188,10 +189,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Home\Transient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Database\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

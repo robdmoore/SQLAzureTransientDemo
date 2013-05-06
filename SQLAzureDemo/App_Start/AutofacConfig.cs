@@ -12,6 +12,7 @@ namespace SQLAzureDemo.App_Start
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterModule(new NHibernateModule(connectionString));
+            builder.RegisterModule<RepositoryModule>();
 
             return builder.Build();
         }

@@ -19,13 +19,14 @@
           <a class="brand" href="/">SQL Azure Demo</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
+              <li>@Html.ActionLink("Home", "Index", "Home")</li>
+              <li>@Html.ActionLink("Search", "Transient", "Home")</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <div class="container" style="padding-top: 60px;">
+    <div class="container">
         @RenderBody()
 
         @Scripts.Render("~/bundles/footer")

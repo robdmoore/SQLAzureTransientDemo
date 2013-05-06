@@ -1,0 +1,30 @@
+﻿@model SQLAzureDemo.Database.Repositories.MovieSearchResult
+
+@{
+    ViewBag.Title = "Search with no Transient protection";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@if (Model == null)
+{
+    <p>Enter a term to perform a partial search in the movie titles.</p>
+    using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Movie Search</legend>
+            <p>
+                @Html.Label("q", "Search term")
+                @Html.TextBox("q")
+            </p>
+            <button type="submit" class="btn">Search</button>
+        </fieldset>
+    }
+}
+else
+{
+    <h2>Searching for: @Model.SearchTerm</h2>
+    
+    <p>There are @Model.NumberOfMovies that were returned with an average creation year of @Model.AverageYearOfCreation.</p>
+    <p><a href="">Try again...</a></p>
+}
