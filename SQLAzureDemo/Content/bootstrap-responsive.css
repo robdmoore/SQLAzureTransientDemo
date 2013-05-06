@@ -1092,6 +1092,9 @@
     height: 0;
     overflow: hidden;
   }
+  body>.container {
+      padding-top: 0;
+  }
   .navbar .btn-navbar {
     display: block;
   }

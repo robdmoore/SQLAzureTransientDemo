@@ -14,7 +14,6 @@ namespace SQLAzureDemo
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/site.css",
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-responsive.css"
             ));

@@ -292,6 +292,10 @@ a:focus {
   width: 940px;
 }
 
+body>.container {
+    padding-top: 60px;
+}
+
 .span12 {
   width: 940px;
 }
