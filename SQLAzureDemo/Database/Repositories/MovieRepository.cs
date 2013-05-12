@@ -22,12 +22,15 @@ namespace SQLAzureDemo.Database.Repositories
 
         public MovieSearchResult Search(string searchText)
         {
+            var count = _session.Query<Movie>()
+                .Count(m => m.Title.Contains(searchText));
+
+            if (count == 0)
+                return new MovieSearchResult {SearchTerm = searchText};
+
             var avg = _session.Query<Movie>()
                 .Where(m => m.Title.Contains(searchText))
                 .Average(m => m.Year);
-
-            var count = _session.Query<Movie>()
-                .Count(m => m.Title.Contains(searchText));
 
             return new MovieSearchResult {AverageYearOfCreation = Convert.ToInt32(avg), NumberOfMovies = count, SearchTerm = searchText};
         }

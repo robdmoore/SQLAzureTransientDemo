@@ -25,6 +25,13 @@ else
 {
     <h2>Searching for: @Model.SearchTerm</h2>
     
-    <p>There are <span class="label label-info">@Model.NumberOfMovies</span> that were returned with an average creation year of <span class="label label-info">@Model.AverageYearOfCreation</span>.</p>
+    if (Model.NumberOfMovies == 0)
+    {
+         <p>No results returned.</p>
+    }
+    else
+    {
+        <p>There are <span class="label label-info">@Model.NumberOfMovies</span> that were returned with an average creation year of <span class="label label-info">@Model.AverageYearOfCreation</span>.</p>
+    }
     <p>@Html.ActionLink("Try again...", "Transient")</p>
 }
