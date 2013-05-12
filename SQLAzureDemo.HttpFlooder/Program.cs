@@ -30,8 +30,15 @@ namespace SQLAzureDemo.HttpFlooder
                         .ContinueWith(s => Console.WriteLine(s.Result))
                 );
             }
-
-            Task.WaitAll(tasks.ToArray());
+            try
+            {
+                Task.WaitAll(tasks.ToArray());
+            }
+            catch (AggregateException e)
+            {
+                foreach (var exception in e.InnerExceptions)
+                    Console.WriteLine(exception);
+            }
             Console.WriteLine("Finished. Press any key...");
             Console.ReadLine();
         }
