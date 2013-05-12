@@ -203,6 +203,7 @@
     <EmbeddedResource Include="Database\Migrations\Migration20130505180700_CreateMovieTable.sql" />
     <EmbeddedResource Include="Database\Migrations\Migration20130512200400_AddExceptionLoggingTables.sql" />
     <EmbeddedResource Include="Database\Migrations\Migration20130506224800_MultiplyNumberOfMovies.sql" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
