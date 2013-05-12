@@ -67,6 +67,7 @@ namespace SQLAzureDemo.HttpFlooder
         public static async Task<HttpResponseMessage> SendHttpRequest(string url, string searchTerm)
         {
             var client = new HttpClient();
+            client.Timeout = TimeSpan.FromMinutes(5);
             return await client.GetAsync(string.Format(url, searchTerm));
         }
 
