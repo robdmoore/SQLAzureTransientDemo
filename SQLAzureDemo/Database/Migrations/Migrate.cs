@@ -9,12 +9,15 @@ namespace SQLAzureDemo.Database.Migrations
     {
         public static void Database(string connectionString)
         {
-            DeployChanges.To
+            var result = DeployChanges.To
                 .SqlDatabase(connectionString)
                 .WithScriptsAndCodeEmbeddedInAssembly(Assembly.GetExecutingAssembly())
                 .LogTo(new SerilogUpgradeLog())
                 .Build()
                 .PerformUpgrade();
+
+            if (!result.Successful)
+                throw result.Error;
         }
 
         class SerilogUpgradeLog : IUpgradeLog
