@@ -9,6 +9,11 @@ namespace SQLAzureDemo
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("Throw", "Errors/Throw", new {controller = "Errors", action = "Throw"});
+
+            routes.MapRoute("Errors", "Errors/{resource}/{subResource}",
+                new { controller = "Errors", action = "Index", resource = UrlParameter.Optional, subResource = UrlParameter.Optional });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -6,6 +6,8 @@ using Autofac.Integration.Mvc;
 using SQLAzureDemo.App_Start;
 using SQLAzureDemo.Database.Migrations;
 using Serilog;
+using StackExchange.Exceptional;
+using StackExchange.Exceptional.Stores;
 
 namespace SQLAzureDemo
 {
@@ -14,6 +16,7 @@ namespace SQLAzureDemo
         protected void Application_Start()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
+            ErrorStore.Setup("SQLAzureDemo", new SQLErrorStore(connectionString));
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             var container = AutofacConfig.BuildContainer(connectionString);

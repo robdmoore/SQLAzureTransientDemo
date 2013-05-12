@@ -72,6 +72,9 @@
     <Reference Include="Serilog.FullNetFx">
       <HintPath>..\packages\Serilog.0.2.4\lib\net45\Serilog.FullNetFx.dll</HintPath>
     </Reference>
+    <Reference Include="StackExchange.Exceptional">
+      <HintPath>..\packages\StackExchange.Exceptional.1.0.52\lib\StackExchange.Exceptional.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -154,6 +157,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NHibernate\NHibernateConfiguration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs" />
     <Compile Include="Database\Migrations\Migrate.cs" />
@@ -172,7 +176,8 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <EmbeddedResource Include="Database\Migrations\Migration20130505180700_CreateMovieTable.sql" />
-    <EmbeddedResource Include="Database\Migrations\Migration20130605224800_MultiplyNumberOfMovies.sql" />
+    <EmbeddedResource Include="Database\Migrations\Migration20130512200400_AddExceptionLoggingTables.sql" />
+    <EmbeddedResource Include="Database\Migrations\Migration20130506224800_MultiplyNumberOfMovies.sql" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
