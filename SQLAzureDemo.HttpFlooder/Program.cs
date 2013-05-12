@@ -15,11 +15,12 @@ namespace SQLAzureDemo.HttpFlooder
         static void Main()
         {
             const string url = "http://mscloudperthdemo.azurewebsites.net/Home/Transient?q={0}";
-            ServicePointManager.DefaultConnectionLimit = 100;
+            ServicePointManager.DefaultConnectionLimit = 500;
+            ServicePointManager.MaxServicePointIdleTime = 5*60*1000;
             var random = new Random();
             var tasks = new List<Task>();
 
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < 500; i++)
             {
                 var searchTerm = GetRandomSearchString(random);
                 var stopwatch = Stopwatch.StartNew();
