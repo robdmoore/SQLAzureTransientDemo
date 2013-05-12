@@ -9,6 +9,7 @@ namespace SQLAzureDemo.Database.Migrations
     {
         public static void Database(string connectionString)
         {
+            // Note: This isn't sufficient for real prod scenarios - we need to add resilient sql azure connection and use transactions
             var result = DeployChanges.To
                 .SqlDatabase(connectionString)
                 .WithScriptsAndCodeEmbeddedInAssembly(Assembly.GetExecutingAssembly())
