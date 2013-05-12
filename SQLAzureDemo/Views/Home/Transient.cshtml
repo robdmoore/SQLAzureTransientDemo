@@ -15,7 +15,7 @@
             <legend>Movie Search</legend>
             <p>
                 @Html.Label("q", "Search term")
-                @Html.TextBox("q")
+                @Html.TextBox("q", "", new {autofocus = "autofocus"})
             </p>
             <button type="submit" class="btn">Search</button>
         </fieldset>
