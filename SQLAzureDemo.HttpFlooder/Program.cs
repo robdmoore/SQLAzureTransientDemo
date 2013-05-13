@@ -14,7 +14,7 @@ namespace SQLAzureDemo.HttpFlooder
         private static readonly Regex Regex = new Regex(@"There are <span class=""label label-info"">(\d+)</span> that were returned with an average creation year of <span class=""label label-info"">(\d+)</span>");
         static void Main()
         {
-            const string url = "http://mscloudperthdemo.azurewebsites.net/Home/Transient?q={0}";
+            const string url = "http://perthazureug.azurewebsites.net/Home/Transient?q={0}";
             ServicePointManager.DefaultConnectionLimit = 500;
             ServicePointManager.MaxServicePointIdleTime = 5*60*1000;
             var random = new Random();
