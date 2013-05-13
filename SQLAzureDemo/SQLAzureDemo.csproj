@@ -182,6 +182,7 @@
     <Compile Include="App_Start\Serilog\AzureTableStorageSink.cs" />
     <Compile Include="App_Start\Serilog\ExceptionExtensions.cs" />
     <Compile Include="App_Start\Serilog\LoggerConfigurationAzureTableStorageExtensions.cs" />
+    <Compile Include="Controllers\ResilientController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TransientController.cs" />
@@ -222,6 +223,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Transient\Index.cshtml" />
+    <Content Include="Views\Resilient\Index.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
