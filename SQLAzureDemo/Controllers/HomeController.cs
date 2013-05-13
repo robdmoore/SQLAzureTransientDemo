@@ -17,9 +17,9 @@ namespace SQLAzureDemo.Controllers
             return View();
         }
 
-        public ActionResult Transient(string q)
+        public ActionResult Transient(string q, int page = 1)
         {
-            return View(!string.IsNullOrEmpty(q) ? _repository.Search(q) : null);
+            return View(!string.IsNullOrEmpty(q) ? _repository.Search(q, page, 500) : null);
         }
     }
 }

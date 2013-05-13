@@ -25,13 +25,44 @@ else
 {
     <h2>Searching for: @Model.SearchTerm</h2>
     
-    if (Model.NumberOfMovies == 0)
+    if (Model.TotalCount == 0)
     {
          <p>No results returned.</p>
     }
     else
     {
-        <p>There are <span class="label label-info">@Model.NumberOfMovies</span> that were returned with an average creation year of <span class="label label-info">@Model.AverageYearOfCreation</span>.</p>
+        <p>There are <span class="label label-info">@Model.TotalCount</span> that were returned with an average creation year of <span class="label label-info">@Model.AbsoluteAverageYearOfCreation</span>.</p>
+        <p>Showing @Model.Movies.Count out of @Model.TotalCount. Page: @Model.Page.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Creation Year</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var movie in Model.Movies)
+            {
+                <tr>
+                    <td>@movie.Id</td>
+                    <td>@movie.Title</td>
+                    <td>@movie.Year</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <p>
+        @if (Model.Page > 1)
+        {
+            @:<a href="?q=@Model.SearchTerm&amp;page=@(Model.Page-1)">Page @(Model.Page-1)</a> |
+        }
+        Page @Model.Page
+        @if (Model.ResultsPerPage * Model.Page < Model.TotalCount)
+        {
+            @:| <a href="?q=@Model.SearchTerm&amp;page=@(Model.Page+1)">Page @(Model.Page+1)</a>
+        }
+        </p>
     }
     <p>@Html.ActionLink("Try again...", "Transient")</p>
 }
