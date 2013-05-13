@@ -33,6 +33,10 @@ namespace SQLAzureDemo.Database.Repositories
                 .Where(m => m.Title.Contains(searchText))
                 .Average(m => m.Year);
 
+            var totalPages = (int) Math.Ceiling((double) count/numPerPage);
+            if (count < numPerPage*page)
+                page = totalPages;
+
             var movies = _session.Query<Movie>()
                 .Where(m => m.Title.Contains(searchText))
                 .OrderBy(m => m.Title)
@@ -48,7 +52,7 @@ namespace SQLAzureDemo.Database.Repositories
                 AbsoluteAverageYearOfCreation = Convert.ToInt32(avg),
                 TotalCount = count,
                 Movies = movies,
-                TotalPages = (int) Math.Ceiling((double) count/numPerPage)
+                TotalPages = totalPages
             };
         }
     }
