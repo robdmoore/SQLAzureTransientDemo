@@ -14,20 +14,25 @@ namespace SQLAzureDemo.HttpFlooder
         private static readonly Regex Regex = new Regex(@"There are <span class=""label label-info"">(\d+)</span> that were returned with an average creation year of <span class=""label label-info"">(\d+)</span>");
         static void Main()
         {
-            const string url = "http://mscloudperthdemo.azurewebsites.net/Home/Transient?q={0}&page={1}";
+            const int noOfRequests = 200;
+            var urls = new[]
+            {
+                "http://mscloudperthdemo.azurewebsites.net/Home/Transient?q={0}&page={1}",
+                "http://mscloudperthdemo2.azurewebsites.net/Home/Transient?q={0}&page={1}"
+            };
             ServicePointManager.DefaultConnectionLimit = 500;
             ServicePointManager.MaxServicePointIdleTime = 5*60*1000;
             var random = new Random();
             var tasks = new List<Task>();
 
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < noOfRequests; i++)
             {
                 var searchTerm = GetRandomSearchString(random);
                 var page = random.Next(1, 250);
                 var stopwatch = Stopwatch.StartNew();
-                Console.WriteLine("Beginning search for {0}, page {1}", searchTerm, page);
+                Console.WriteLine("Beginning search for {0}, page {1}, site {2}", searchTerm, page, i%urls.Length+1);
                 tasks.Add(
-                    SendHttpRequest(string.Format(url, searchTerm, page))
+                    SendHttpRequest(string.Format(urls[i%urls.Length], searchTerm, page))
                         .ContinueWith(async r => await ProcessHttpResponse(stopwatch, searchTerm, r.Result)).Unwrap()
                         .ContinueWith(s => Console.WriteLine(s.Result))
                 );
@@ -83,7 +88,7 @@ namespace SQLAzureDemo.HttpFlooder
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
             };
             var searchTerm = new StringBuilder();
-            var numLetters = random.Next(1, 6);
+            var numLetters = random.Next(1, 4);
             for (var j = 0; j < numLetters; j++)
                 searchTerm.Append(searchTerms[random.Next(0, searchTerms.Length)]);
             return searchTerm.ToString();
