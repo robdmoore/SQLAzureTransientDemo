@@ -9,7 +9,7 @@
 @if (Model == null)
 {
     <p>Enter a term to perform a partial search in the movie titles.</p>
-    using (Html.BeginForm("Transient", "Home", FormMethod.Get))
+    using (Html.BeginForm("Index", "Transient", FormMethod.Get))
     {
         <fieldset>
             <legend>Movie Search</legend>
@@ -64,5 +64,5 @@ else
         }
         </p>
     }
-    <p>@Html.ActionLink("Try again...", "Transient")</p>
+    <p>@Html.ActionLink("Try again...", "Index")</p>
 }

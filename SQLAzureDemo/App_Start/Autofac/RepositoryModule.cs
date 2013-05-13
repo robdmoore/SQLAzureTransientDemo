@@ -1,6 +1,7 @@
 ﻿using Autofac;
-using SQLAzureDemo.Database.Repositories;
 using Autofac.Integration.Mvc;
+using NHibernate;
+using SQLAzureDemo.Database.Repositories;
 
 namespace SQLAzureDemo.App_Start.Autofac
 {
@@ -8,8 +9,12 @@ namespace SQLAzureDemo.App_Start.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<MovieRepository>()
-                .AsImplementedInterfaces()
+            builder.Register(c => new MovieRepository(c.ResolveKeyed<ISession>(NHibernateModule.TransientConnection)))
+                .Keyed<IMovieRepository>(NHibernateModule.TransientConnection)
+                .InstancePerHttpRequest();
+
+            builder.Register(c => new MovieRepository(c.ResolveKeyed<ISession>(NHibernateModule.ResilientConnection)))
+                .Keyed<IMovieRepository>(NHibernateModule.ResilientConnection)
                 .InstancePerHttpRequest();
         }
     }

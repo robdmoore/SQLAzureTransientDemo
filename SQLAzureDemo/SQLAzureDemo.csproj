@@ -184,6 +184,7 @@
     <Compile Include="App_Start\Serilog\LoggerConfigurationAzureTableStorageExtensions.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TransientController.cs" />
     <Compile Include="Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs" />
     <Compile Include="Database\Migrations\Migrate.cs" />
     <Compile Include="Database\Models\Movie.cs" />
@@ -220,7 +221,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Home\Transient.cshtml" />
+    <Content Include="Views\Transient\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
