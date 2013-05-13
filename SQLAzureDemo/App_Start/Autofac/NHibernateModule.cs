@@ -1,9 +1,12 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
+using Microsoft.Practices.TransientFaultHandling;
 using NHibernate;
 using NHibernate.Driver;
 using NHibernate.SqlAzure;
 using SQLAzureDemo.App_Start.NHibernate;
 using Autofac.Integration.Mvc;
+using Serilog;
 
 namespace SQLAzureDemo.App_Start.Autofac
 {
@@ -22,7 +25,7 @@ namespace SQLAzureDemo.App_Start.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             Register<Sql2008ClientDriver>(builder, TransientConnection);
-            Register<SqlAzureClientDriverWithTimeoutRetries>(builder, ResilientConnection);
+            Register<LoggingSqlAzureClientDriverWithTimeoutRetries>(builder, ResilientConnection);
         }
 
         private void Register<TDriver>(ContainerBuilder builder, string key)
@@ -35,6 +38,19 @@ namespace SQLAzureDemo.App_Start.Autofac
             builder.Register(c => c.ResolveKeyed<ISessionFactory>(key).OpenSession())
                 .Keyed<ISession>(key)
                 .InstancePerHttpRequest();
+        }
+    }
+
+    public class LoggingSqlAzureClientDriverWithTimeoutRetries : SqlAzureClientDriverWithTimeoutRetries
+    {
+        protected override EventHandler<RetryingEventArgs> RetryEventHandler()
+        {
+            return (sender, args) => Log.Logger.Warning(args.LastException,
+                "SQLAzureClientDriver Retry - Count:{0}, Delay:{1}, Exception:{2}\r\n\r\n",
+                args.CurrentRetryCount,
+                args.Delay,
+                args.LastException
+            );
         }
     }
 }
