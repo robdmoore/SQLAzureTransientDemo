@@ -14,19 +14,20 @@ namespace SQLAzureDemo.HttpFlooder
         private static readonly Regex Regex = new Regex(@"There are <span class=""label label-info"">(\d+)</span> that were returned with an average creation year of <span class=""label label-info"">(\d+)</span>");
         static void Main()
         {
-            const string url = "http://perthazureug.azurewebsites.net/Home/Transient?q={0}";
+            const string url = "http://mscloudperthdemo.azurewebsites.net/Home/Transient?q={0}&page={1}";
             ServicePointManager.DefaultConnectionLimit = 500;
             ServicePointManager.MaxServicePointIdleTime = 5*60*1000;
             var random = new Random();
             var tasks = new List<Task>();
 
-            for (var i = 0; i < 500; i++)
+            for (var i = 0; i < 100; i++)
             {
                 var searchTerm = GetRandomSearchString(random);
+                var page = random.Next(1, 250);
                 var stopwatch = Stopwatch.StartNew();
-                Console.WriteLine("Beginning search for {0}", searchTerm);
+                Console.WriteLine("Beginning search for {0}, page {1}", searchTerm, page);
                 tasks.Add(
-                    SendHttpRequest(url, searchTerm)
+                    SendHttpRequest(string.Format(url, searchTerm, page))
                         .ContinueWith(async r => await ProcessHttpResponse(stopwatch, searchTerm, r.Result)).Unwrap()
                         .ContinueWith(s => Console.WriteLine(s.Result))
                 );
@@ -64,11 +65,11 @@ namespace SQLAzureDemo.HttpFlooder
             return s.ToString();
         }
 
-        public static async Task<HttpResponseMessage> SendHttpRequest(string url, string searchTerm)
+        public static async Task<HttpResponseMessage> SendHttpRequest(string url)
         {
             var client = new HttpClient();
             client.Timeout = TimeSpan.FromMinutes(5);
-            return await client.GetAsync(string.Format(url, searchTerm));
+            return await client.GetAsync(url);
         }
 
         private static string GetRandomSearchString(Random random)
