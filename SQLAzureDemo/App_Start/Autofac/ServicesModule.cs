@@ -1,5 +1,4 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using SQLAzureDemo.Controllers.Services;
@@ -23,26 +22,11 @@ namespace SQLAzureDemo.App_Start.Autofac
                 .WithParameter(new TypedParameter(typeof(CloudTable), _table))
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
+
+            builder.RegisterType<ControllerOperationStatisticsService>()
+                .WithParameter(new TypedParameter(typeof(CloudTable), _table))
+                .AsImplementedInterfaces()
+                .SingleInstance();
         }
-    }
-
-    public class ControllerOperation : TableEntity
-    {
-        private static readonly long TicksInOneMinute = TimeSpan.FromMinutes(1).Ticks;
-
-        public ControllerOperation() {}
-
-        public ControllerOperation(string type, string url, bool failed)
-        {
-            OperationFailed = failed;
-            Url = url;
-            OperationType = type;
-            RowKey = type;
-            PartitionKey = (DateTime.UtcNow.Ticks % TicksInOneMinute).ToString();
-        }
-
-        public bool OperationFailed { get; set; }
-        public string OperationType { get; set; }
-        public string Url { get; set; }
     }
 }

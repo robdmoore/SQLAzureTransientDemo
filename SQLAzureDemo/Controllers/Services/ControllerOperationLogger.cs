@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using System.Web;
 using Microsoft.WindowsAzure.Storage.Table;
-using SQLAzureDemo.App_Start.Autofac;
 
 namespace SQLAzureDemo.Controllers.Services
 {

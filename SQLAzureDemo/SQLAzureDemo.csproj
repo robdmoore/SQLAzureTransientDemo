@@ -189,7 +189,9 @@
     <Compile Include="Controllers\ResilientController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Services\ControllerOperation.cs" />
     <Compile Include="Controllers\Services\ControllerOperationLogger.cs" />
+    <Compile Include="Controllers\Services\ControllerOperationStatisticsService.cs" />
     <Compile Include="Controllers\TransientController.cs" />
     <Compile Include="Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs" />
     <Compile Include="Database\Migrations\Migrate.cs" />

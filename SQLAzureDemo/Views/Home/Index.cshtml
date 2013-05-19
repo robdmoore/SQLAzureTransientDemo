@@ -1,7 +1,18 @@
-﻿@model dynamic
+﻿@model SQLAzureDemo.Controllers.Services.OperationStatistics
 
 @{
     ViewBag.Title = "SQL Azure Demo";
 }
 
 <h1>SQL Azure Demo</h1>
+
+<div class="row-fluid">
+    <div class="span6">
+        <h2>@(Model.TotalResilientRequests-Model.FailedResilientRequests)/@Model.TotalResilientRequests</h2>
+        <p>Requests in the last 5 minutes <strong>with transient protection</strong>.</p>
+    </div>
+    <div class="span6">
+        <h2>@(Model.TotalTransientRequests-Model.FailedTransientRequests)/@Model.TotalTransientRequests</h2>
+        <p>Requests in the last 5 minutes <strong>without transient protection</strong>.</p>
+    </div>
+</div>
