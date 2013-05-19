@@ -74,7 +74,7 @@ namespace SQLAzureDemo.App_Start.Autofac
                 Exception = lastException.TraceInformation();
                 ExceptionMessage = lastException.Message;
                 
-                Url = HttpContext.Current.Request.RawUrl;
+                Url = HttpContext.Current.Request.Url.ToString();
                 Server = Environment.MachineName;
 
                 var sqlException = lastException as SqlException;
