@@ -46,7 +46,7 @@ namespace SQLAzureDemo.App_Start.Autofac
         protected override EventHandler<RetryingEventArgs> RetryEventHandler()
         {
             return (sender, args) => Log.Logger.Warning(args.LastException,
-                "SQLAzureClientDriver Retry - Count:{0}, Delay:{1}, Exception:{2}\r\n\r\n",
+                "SQLAzureClientDriver Retry - Count:{0}, Delay:{1}, Exception:{2}",
                 args.CurrentRetryCount,
                 args.Delay,
                 args.LastException

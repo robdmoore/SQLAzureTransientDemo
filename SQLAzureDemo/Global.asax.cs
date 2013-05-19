@@ -27,9 +27,9 @@ namespace SQLAzureDemo
             var container = AutofacConfig.BuildContainer(connectionString);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             Log.Logger = new LoggerConfiguration()
-                .Enrich.WithHttpRequestProperties()
                 .WriteTo.AzureTable(CloudStorageAccount.Parse(azureStorage))
                 .CreateLogger();
+            Trace.WriteLine("Test");
             Migrate.Database(connectionString);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text.RegularExpressions;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using Serilog.Core;
@@ -27,13 +28,15 @@ namespace SQLAzureDemo.App_Start.Serilog
 
     public class LogEventEntity : TableEntity
     {
+        private static readonly Regex RowKeyNotAllowedMatch = new Regex(@"(\\|/|#|\?)");
+
         public LogEventEntity() {}
 
         public LogEventEntity(LogEvent log)
         {
             Timestamp = log.TimeStamp.ToUniversalTime().DateTime;
             PartitionKey = string.Format("0{0}", Timestamp.Ticks);
-            RowKey = string.Format("{0}|{1}", log.Level, log.MessageTemplate.Text);
+            RowKey = GetValidRowKey(string.Format("{0}|{1}", log.Level, log.MessageTemplate.Text));
             MessageTemplate = log.MessageTemplate.Text;
             Level = log.Level.ToString();
             Exception = log.Exception.TraceInformation();
@@ -41,6 +44,13 @@ namespace SQLAzureDemo.App_Start.Serilog
             var s = new StringWriter();
             new SimpleJsonFormatter().Format(log, s);
             Data = s.ToString();
+        }
+
+        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx
+        private static string GetValidRowKey(string rowKey)
+        {
+            rowKey = RowKeyNotAllowedMatch.Replace(rowKey, "");
+            return rowKey.Length > 1024 ? rowKey.Substring(0, 1024) : rowKey;
         }
 
         public string MessageTemplate { get; set; }
