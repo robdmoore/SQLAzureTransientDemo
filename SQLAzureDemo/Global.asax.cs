@@ -18,7 +18,6 @@ namespace SQLAzureDemo
     {
         protected void Application_Start()
         {
-            Trace.Listeners.Add(new SerilogTraceListener());
             var connectionString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
             var azureStorage = ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString;
             ErrorStore.Setup("SQLAzureDemo", new SQLErrorStore(connectionString));
@@ -29,21 +28,7 @@ namespace SQLAzureDemo
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.AzureTable(CloudStorageAccount.Parse(azureStorage))
                 .CreateLogger();
-            Trace.WriteLine("Test");
             Migrate.Database(connectionString);
-        }
-    }
-
-    public class SerilogTraceListener : TraceListener
-    {
-        public override void Write(string message)
-        {
-            Log.Logger.Warning(message);
-        }
-
-        public override void WriteLine(string message)
-        {
-            Log.Logger.Warning(message);
         }
     }
 }
