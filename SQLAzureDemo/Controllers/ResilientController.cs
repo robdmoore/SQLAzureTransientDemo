@@ -16,15 +16,20 @@ namespace SQLAzureDemo.Controllers
 
         public ResilientController(IComponentContext scope)
         {
-            try
-            {
                 // Note: you would normally resolve the IMovieRepository into the controller, but this is needed for this demo to enable use of ResolveKeyed
                 _repository = scope.ResolveKeyed<IMovieRepository>(NHibernateModule.ResilientConnection);
+        }
+
+        public ActionResult Index(string q, int page = 1)
+        {
+            try
+            {
+                return View(!string.IsNullOrEmpty(q) ? _repository.Search(q, page, 500) : null);
             }
             catch (Exception e)
             {
                 CheckException(e);
-                ExceptionDispatchInfo.Capture(e).Throw();
+                throw;
             }
         }
 
@@ -40,11 +45,6 @@ namespace SQLAzureDemo.Controllers
             {
                 CheckException(e.InnerException);
             }
-        }
-
-        public ActionResult Index(string q, int page = 1)
-        {
-            return View(!string.IsNullOrEmpty(q) ? _repository.Search(q, page, 500) : null);
         }
     }
 }
