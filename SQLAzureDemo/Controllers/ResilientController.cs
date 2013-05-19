@@ -23,13 +23,22 @@ namespace SQLAzureDemo.Controllers
             }
             catch (Exception e)
             {
-                if (e is SqlException)
-                {
-                    Log.Logger.Warning(e, "SQL Exception with error nos. {0}",
-                        string.Join(",", ((SqlException)e).Errors.Cast<SqlError>().Select(error => error.Number.ToString()).ToArray()));
-                    
-                }
+                CheckException(e);
                 ExceptionDispatchInfo.Capture(e).Throw();
+            }
+        }
+
+        private static void CheckException(Exception e)
+        {
+            var exception = e as SqlException;
+            if (exception != null)
+            {
+                Log.Logger.Warning(exception, "SQL Exception with error nos. {0}",
+                    string.Join(",", exception.Errors.Cast<SqlError>().Select(error => error.Number.ToString()).ToArray()));
+            }
+            else if (e.InnerException != null)
+            {
+                CheckException(e.InnerException);
             }
         }
 
