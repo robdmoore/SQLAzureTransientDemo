@@ -41,7 +41,7 @@ namespace SQLAzureDemo.Controllers
                 Log.Logger.Warning(exception, "SQL Exception with error nos. {0}",
                     string.Join(",", exception.Errors.Cast<SqlError>().Select(error => error.Number.ToString()).ToArray()));
             }
-            else if (e.InnerException != null)
+            if (e.InnerException != null)
             {
                 CheckException(e.InnerException);
             }
