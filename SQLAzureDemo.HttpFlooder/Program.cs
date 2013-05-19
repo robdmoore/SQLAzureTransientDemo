@@ -14,7 +14,7 @@ namespace SQLAzureDemo.HttpFlooder
         private static readonly Regex Regex = new Regex(@"There are <span class=""label label-info"">(\d+)</span> that were returned with an average creation year of <span class=""label label-info"">(\d+)</span>");
         static void Main()
         {
-            const int noOfRequests = 200;
+            const int noOfRequests = 300;
             var urls = new[]
             {
                 "http://mscloudperthdemo.azurewebsites.net/Resilient?q={0}&page={1}",
