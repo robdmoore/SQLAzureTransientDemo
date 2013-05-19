@@ -5,8 +5,6 @@ namespace SQLAzureDemo.Controllers.Services
 {
     public class ControllerOperation : TableEntity
     {
-        public static readonly long TicksInOneMinute = TimeSpan.FromMinutes(1).Ticks;
-
         public ControllerOperation() {}
 
         public ControllerOperation(string type, string url, bool failed)
@@ -15,7 +13,7 @@ namespace SQLAzureDemo.Controllers.Services
             Url = url;
             OperationType = type;
             RowKey = type;
-            PartitionKey = (DateTime.UtcNow.Ticks / TicksInOneMinute).ToString();
+            PartitionKey = string.Format("0{0}", DateTime.UtcNow.Ticks);
         }
 
         public bool OperationFailed { get; set; }

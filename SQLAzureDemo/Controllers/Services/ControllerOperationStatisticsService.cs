@@ -28,10 +28,10 @@ namespace SQLAzureDemo.Controllers.Services
 
         public OperationStatistics GetStatistics()
         {
-            var fiveMinsAgo = DateTime.UtcNow.AddMinutes(-5).Ticks / ControllerOperation.TicksInOneMinute;
+            var fiveMinsAgo = DateTime.UtcNow.AddMinutes(-5).Ticks;
             var stats = _table.ExecuteQuery(
                 new TableQuery<ControllerOperation>()
-                    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, fiveMinsAgo.ToString()))
+                    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, string.Format("0{0}", fiveMinsAgo.ToString())))
             ).ToList();
 
             return new OperationStatistics
