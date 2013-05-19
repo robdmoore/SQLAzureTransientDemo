@@ -79,7 +79,7 @@
     </Reference>
     <Reference Include="NHibernate.SqlAzure, Version=1.0.0.37, Culture=neutral, PublicKeyToken=bb07ae0f952b17ee, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NHibernate.SqlAzure.1.0.0.37\lib\NET40\NHibernate.SqlAzure.dll</HintPath>
+      <HintPath>..\lib\NHibernate.SqlAzure.dll</HintPath>
     </Reference>
     <Reference Include="Serilog">
       <HintPath>..\packages\Serilog.0.2.4\lib\net45\Serilog.dll</HintPath>
@@ -227,7 +227,6 @@
     <Content Include="Views\Resilient\Index.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
