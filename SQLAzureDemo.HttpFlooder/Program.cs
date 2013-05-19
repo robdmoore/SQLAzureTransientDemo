@@ -17,8 +17,14 @@ namespace SQLAzureDemo.HttpFlooder
             const int noOfRequests = 200;
             var urls = new[]
             {
-                "http://mscloudperthdemo.azurewebsites.net/Home/Transient?q={0}&page={1}",
-                "http://mscloudperthdemo2.azurewebsites.net/Home/Transient?q={0}&page={1}"
+                "http://mscloudperthdemo.azurewebsites.net/Resilient?q={0}&page={1}",
+                "http://mscloudperthdemo2.azurewebsites.net/Resilient?q={0}&page={1}",
+                "http://mscloudperthdemo3.azurewebsites.net/Resilient?q={0}&page={1}",
+                "http://mscloudperthdemo4.azurewebsites.net/Resilient?q={0}&page={1}",
+                "http://mscloudperthdemo.azurewebsites.net/Transient?q={0}&page={1}",
+                "http://mscloudperthdemo2.azurewebsites.net/Transient?q={0}&page={1}",
+                "http://mscloudperthdemo3.azurewebsites.net/Transient?q={0}&page={1}",
+                "http://mscloudperthdemo4.azurewebsites.net/Transient?q={0}&page={1}"
             };
             ServicePointManager.DefaultConnectionLimit = 500;
             ServicePointManager.MaxServicePointIdleTime = 5*60*1000;
@@ -65,7 +71,7 @@ namespace SQLAzureDemo.HttpFlooder
                 if (match.Success)
                     s.Append(string.Format(" {0} Results with average creation year of {1}.", match.Groups[1].Value, match.Groups[2].Value));
                 else
-                    s.Append("No results returned.");
+                    s.Append(" No results returned.");
 
             return s.ToString();
         }
