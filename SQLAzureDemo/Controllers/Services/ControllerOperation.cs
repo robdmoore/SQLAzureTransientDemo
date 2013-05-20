@@ -5,10 +5,14 @@ namespace SQLAzureDemo.Controllers.Services
 {
     public class ControllerOperation : TableEntity
     {
+        public const string Transient = "transient";
+        public const string Resilient = "resilient";
+
         public ControllerOperation() {}
 
-        public ControllerOperation(string type, string url, bool failed)
+        public ControllerOperation(string type, string url, bool failed, TimeSpan elapsed)
         {
+            SecondsElapsed = elapsed.TotalSeconds;
             OperationFailed = failed;
             Url = url;
             OperationType = type;
@@ -19,5 +23,6 @@ namespace SQLAzureDemo.Controllers.Services
         public bool OperationFailed { get; set; }
         public string OperationType { get; set; }
         public string Url { get; set; }
+        public double SecondsElapsed { get; set; }
     }
 }

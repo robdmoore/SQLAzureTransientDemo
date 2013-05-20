@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Web;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -10,18 +11,22 @@ namespace SQLAzureDemo.Controllers.Services
     public class ControllerOperationLogger : IControllerOperationLogger
     {
         private readonly CloudTable _table;
+        private readonly Stopwatch _stopwatch;
 
         public ControllerOperationLogger(CloudTable table)
         {
             _table = table;
+            _stopwatch = Stopwatch.StartNew();
         }
 
         public void Dispose()
         {
+            _stopwatch.Stop();
             _table.Execute(TableOperation.Insert(new ControllerOperation(
-                HttpContext.Current.Request.RawUrl.ToLower().Contains("transient") ? "transient" : "resilient",
+                HttpContext.Current.Request.RawUrl.ToLower().Contains("transient") ? ControllerOperation.Transient : ControllerOperation.Resilient,
                 HttpContext.Current.Request.Url.ToString(),
-                OperationFailed()
+                OperationFailed(),
+                _stopwatch.Elapsed
             )));
         }
 

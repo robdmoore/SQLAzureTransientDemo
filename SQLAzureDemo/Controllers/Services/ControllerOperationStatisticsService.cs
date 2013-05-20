@@ -13,8 +13,10 @@ namespace SQLAzureDemo.Controllers.Services
     {
         public int TotalResilientRequests { get; set; }
         public int FailedResilientRequests { get; set; }
+        public double AverageResilientRequests { get; set; }
         public int TotalTransientRequests { get; set; }
         public int FailedTransientRequests { get; set; }
+        public double AverageTransientRequests { get; set; }
     }
 
     public class ControllerOperationStatisticsService : IControllerOperationStatisticsService
@@ -34,12 +36,17 @@ namespace SQLAzureDemo.Controllers.Services
                     .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, string.Format("0{0}", fiveMinsAgo.ToString())))
             ).ToList();
 
+            var successfulResilient = stats.Where(s => s.OperationType == ControllerOperation.Resilient && !s.OperationFailed).ToList();
+            var successfulTransient = stats.Where(s => s.OperationType == ControllerOperation.Transient && !s.OperationFailed).ToList();
+
             return new OperationStatistics
             {
-                TotalResilientRequests = stats.Count(s => s.OperationType == "resilient"),
-                FailedResilientRequests = stats.Count(s => s.OperationType == "resilient" && s.OperationFailed),
-                TotalTransientRequests = stats.Count(s => s.OperationType == "transient"),
-                FailedTransientRequests = stats.Count(s => s.OperationType == "transient" && s.OperationFailed)
+                TotalResilientRequests = stats.Count(s => s.OperationType == ControllerOperation.Resilient),
+                FailedResilientRequests = stats.Count(s => s.OperationType == ControllerOperation.Resilient && s.OperationFailed),
+                AverageResilientRequests = successfulResilient.Any() ? successfulResilient.Average(s => s.SecondsElapsed) : 0,
+                TotalTransientRequests = stats.Count(s => s.OperationType == ControllerOperation.Transient),
+                FailedTransientRequests = stats.Count(s => s.OperationType == ControllerOperation.Transient && s.OperationFailed),
+                AverageTransientRequests = successfulTransient.Any() ? successfulTransient.Average(s => s.SecondsElapsed) : 0,
             };
         }
     }
