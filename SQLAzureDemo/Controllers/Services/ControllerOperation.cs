@@ -16,7 +16,7 @@ namespace SQLAzureDemo.Controllers.Services
             OperationFailed = failed;
             Url = url;
             OperationType = type;
-            RowKey = type;
+            RowKey = string.Format("{0}|{1:D10}", type, elapsed.Ticks);
             PartitionKey = string.Format("0{0}", DateTime.UtcNow.Ticks);
         }
 
