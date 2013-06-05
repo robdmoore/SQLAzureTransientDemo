@@ -1,7 +1,25 @@
 Azure SQL Database Transient Demo
 =================================
 
-This code gives a demonstration of the impact that transient errors have when using SQL Azure.
+This code gives a demonstration of the impact that [transient errors](http://social.technet.microsoft.com/wiki/contents/articles/4235.retry-logic-for-transient-failures-in-windows-azure-sql-database.aspx) have when using Azure [SQL Database](http://www.windowsazure.com/en-us/services/data-management/).
+
+What is the demo doing / how does it work?
+------------------------------------------
+
+The demo consists of a website that allows the user to search for movies within a fictional movie database of 129,600 records that have title and year of manufacture.
+
+The database was [populated by](SQLAzureDemo/Database/Migrations):
+
+1. Grabbing the top 10 results from the [IMDB API](http://imdbapi.org) for movies starting with 0-9 and a-z (returns 360 records)
+2. Combinatorially combining the results together - concatenating the titles and adding the year of creation - to quickly generate a large number of records
+
+The website provides a number of search pages over this database that perform a contains search over the title for a given search term and present a paginated table of results.
+
+The website provides a number of HTTP endpoints (note: the [] denotes an optional component of the URL):
+
+* `/` - Dashboard of the status of the demo in the last 5 minutes
+* `/Transient[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies in a non-transient protected way using NHibernate
+* `/Resilient[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies in a transient protected way using the [NHibernate.SqlAzure](https://github.com/robdmoore/NHibernate.SqlAzure) library
 
 How do I set-up and run the demo?
 ---------------------------------
@@ -16,8 +34,17 @@ How do I set-up and run the demo?
 6. Change the domain names in `SQLAzureDemo.HttpFlooder\Program.cs` from `mscloudperthdemo${X}.azurewebsites.net` to `yourazurewebsitesdomain${X}.azurewebsites.net`.
 7. Run the `SQLAzureDemo.HttpFlooder` project
 
-What should I expect to see?
-----------------------------
+What should I expect to see when running the demo?
+--------------------------------------------------
 
-todo
+The console output for the Http Flooder will show you... todo
+
+
+
+How do I run the demo website locally?
+--------------------------------------
+
+1. Download the Azure SDK and run the Azure Storage Emulator
+2. Create a database called `SQLAzureDemo` on your local SQL Express database (or change the connection string under `Database` in `web.config` to point to a different database)
+3. Run the `SQLAzureDemo` web project
 
