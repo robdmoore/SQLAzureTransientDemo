@@ -13,6 +13,8 @@ namespace SQLAzureDemo.Controllers
         private readonly Func<Owned<IControllerOperationLogger>> _operationLoggerFactory;
         private readonly IMovieRepository _repository;
 
+        //Todo: add endpoint for EF
+
         public ResilientController(IComponentContext scope, Func<Owned<IControllerOperationLogger>> operationLoggerFactory)
         {
             _operationLoggerFactory = operationLoggerFactory;

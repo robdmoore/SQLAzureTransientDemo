@@ -10,10 +10,14 @@ namespace SQLAzureDemo.Database.Migrations
         public static void Database(string connectionString)
         {
             // Note: This isn't sufficient for real prod scenarios - we need to add resilient sql azure connection and use transactions
-            var result = DeployChanges.To
+            var conf = DeployChanges.To
                 .SqlDatabase(connectionString)
                 .WithScriptsAndCodeEmbeddedInAssembly(Assembly.GetExecutingAssembly())
-                .LogTo(new SerilogUpgradeLog())
+                .LogTo(new SerilogUpgradeLog());
+
+            conf.Configure(c => c.ScriptExecutor.ExecutionTimeoutSeconds = 300);
+
+            var result = conf
                 .Build()
                 .PerformUpgrade();
 

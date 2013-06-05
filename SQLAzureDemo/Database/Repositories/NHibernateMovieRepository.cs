@@ -7,16 +7,11 @@ using SQLAzureDemo.Database.Models;
 
 namespace SQLAzureDemo.Database.Repositories
 {
-    public interface IMovieRepository
-    {
-        MovieSearchResult Search(string searchText, int page, int numPerPage);
-    }
-
-    public class MovieRepository : IMovieRepository
+    public class NHibernateMovieRepository : IMovieRepository
     {
         private readonly ISession _session;
 
-        public MovieRepository(ISession session)
+        public NHibernateMovieRepository(ISession session)
         {
             _session = session;
         }
@@ -55,16 +50,5 @@ namespace SQLAzureDemo.Database.Repositories
                 TotalPages = totalPages
             };
         }
-    }
-
-    public class MovieSearchResult
-    {
-        public string SearchTerm { get; set; }
-        public int Page { get; set; }
-        public int TotalPages { get; set; }
-        public int ResultsPerPage { get; set; }
-        public int AbsoluteAverageYearOfCreation { get; set; }
-        public int TotalCount { get; set; }
-        public IList<Movie> Movies { get; set; }
     }
 }
