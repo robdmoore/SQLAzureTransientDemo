@@ -193,17 +193,20 @@
     <Compile Include="App_Start\NHibernate\NHibernateConfiguration.cs" />
     <Compile Include="App_Start\NHibernate\TransientRetry.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ResilientController.cs" />
+    <Compile Include="Controllers\ResilientEntityFrameworkController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TransientEntityFrameworkController.cs" />
+    <Compile Include="Controllers\ResilientNHibernateController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Services\ControllerOperation.cs" />
     <Compile Include="Controllers\Services\ControllerOperationLogger.cs" />
     <Compile Include="Controllers\Services\ControllerOperationStatisticsService.cs" />
-    <Compile Include="Controllers\TransientController.cs" />
+    <Compile Include="Controllers\TransientNHibernateController.cs" />
     <Compile Include="Database\Migrations\Migration20130505180800_PopulateMoviesTable.cs" />
     <Compile Include="Database\Migrations\Migrate.cs" />
     <Compile Include="Database\Models\Movie.cs" />
-    <Compile Include="Database\Models\MovieSearchResult.cs" />
+    <Compile Include="Database\Repositories\MovieSearchResult.cs" />
     <Compile Include="Database\Repositories\EntityFrameworkMovieRepository.cs" />
     <Compile Include="Database\Repositories\IMovieRepository.cs" />
     <Compile Include="Database\Repositories\NHibernateMovieRepository.cs" />
@@ -239,9 +242,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Transient\Index.cshtml" />
-    <Content Include="Views\Resilient\Index.cshtml" />
+    <Content Include="Views\TransientNHibernate\Index.cshtml" />
+    <Content Include="Views\ResilientNHibernate\Index.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\ResilientEntityFramework\Index.cshtml" />
+    <Content Include="Views\TransientEntityFramework\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

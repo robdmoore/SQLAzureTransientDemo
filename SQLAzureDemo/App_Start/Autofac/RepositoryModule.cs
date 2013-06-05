@@ -10,8 +10,6 @@ namespace SQLAzureDemo.App_Start.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //Todo: rename the key constant strings so the repository key registrations don't conflict
-
             builder.Register(c => new NHibernateMovieRepository(c.ResolveKeyed<ISession>(NHibernateModule.TransientConnection)))
                 .Keyed<IMovieRepository>(NHibernateModule.TransientConnection)
                 .InstancePerHttpRequest();

@@ -9,8 +9,8 @@ namespace SQLAzureDemo.App_Start.Autofac
 {
     public class NHibernateModule : Module
     {
-        public const string TransientConnection = "transient";
-        public const string ResilientConnection = "resilient";
+        public const string TransientConnection = "nhtransient";
+        public const string ResilientConnection = "nhresilient";
 
         private readonly string _connectionString;
 

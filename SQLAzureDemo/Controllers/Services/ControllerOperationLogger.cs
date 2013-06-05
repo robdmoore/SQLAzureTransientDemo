@@ -24,6 +24,7 @@ namespace SQLAzureDemo.Controllers.Services
             _stopwatch.Stop();
             _table.Execute(TableOperation.Insert(new ControllerOperation(
                 HttpContext.Current.Request.RawUrl.ToLower().Contains("transient") ? ControllerOperation.Transient : ControllerOperation.Resilient,
+                HttpContext.Current.Request.RawUrl.ToLower().Contains("nhibernate") ? ControllerOperation.NHibernate : ControllerOperation.EntityFramework,
                 HttpContext.Current.Request.Url.ToString(),
                 OperationFailed(),
                 _stopwatch.Elapsed

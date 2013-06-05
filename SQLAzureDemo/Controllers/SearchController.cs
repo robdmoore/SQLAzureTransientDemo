@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Web.Mvc;
-using Autofac;
 using Autofac.Features.OwnedInstances;
-using SQLAzureDemo.App_Start.Autofac;
 using SQLAzureDemo.Controllers.Services;
 using SQLAzureDemo.Database.Repositories;
 
 namespace SQLAzureDemo.Controllers
 {
-    public class ResilientController : Controller
+    public abstract class SearchController : Controller
     {
-        private readonly Func<Owned<IControllerOperationLogger>> _operationLoggerFactory;
         private readonly IMovieRepository _repository;
+        private readonly Func<Owned<IControllerOperationLogger>> _operationLoggerFactory;
 
-        //Todo: add endpoint for EF
-
-        public ResilientController(IComponentContext scope, Func<Owned<IControllerOperationLogger>> operationLoggerFactory)
+        public SearchController(IMovieRepository repository, Func<Owned<IControllerOperationLogger>> operationLoggerFactory)
         {
+            _repository = repository;
             _operationLoggerFactory = operationLoggerFactory;
-            // Note: you would normally resolve the IMovieRepository into the controller, but this is needed for this demo to enable use of ResolveKeyed
-            _repository = scope.ResolveKeyed<IMovieRepository>(NHibernateModule.ResilientConnection);
         }
 
         public ActionResult Index(string q, int page = 1)

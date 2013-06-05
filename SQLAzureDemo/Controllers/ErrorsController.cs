@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using Serilog;
 using StackExchange.Exceptional;
 
 namespace SQLAzureDemo.Controllers

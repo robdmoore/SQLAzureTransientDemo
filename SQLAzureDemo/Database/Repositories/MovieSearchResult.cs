@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using SQLAzureDemo.Database.Models;
 
-namespace SQLAzureDemo.Database.Models
+namespace SQLAzureDemo.Database.Repositories
 {
     public class MovieSearchResult
     {

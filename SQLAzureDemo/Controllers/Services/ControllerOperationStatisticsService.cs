@@ -6,7 +6,7 @@ namespace SQLAzureDemo.Controllers.Services
 {
     public interface IControllerOperationStatisticsService
     {
-        OperationStatistics GetStatistics();
+        OperationStatistics GetStatistics(string framework);
     }
 
     public class OperationStatistics
@@ -28,24 +28,24 @@ namespace SQLAzureDemo.Controllers.Services
             _table = table;
         }
 
-        public OperationStatistics GetStatistics()
+        public OperationStatistics GetStatistics(string framework)
         {
             var fiveMinsAgo = DateTime.UtcNow.AddMinutes(-5).Ticks;
             var stats = _table.ExecuteQuery(
                 new TableQuery<ControllerOperation>()
-                    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, string.Format("0{0}", fiveMinsAgo.ToString())))
+                    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, string.Format("0{0}", fiveMinsAgo)))
             ).ToList();
 
-            var successfulResilient = stats.Where(s => s.OperationType == ControllerOperation.Resilient && !s.OperationFailed).ToList();
-            var successfulTransient = stats.Where(s => s.OperationType == ControllerOperation.Transient && !s.OperationFailed).ToList();
+            var successfulResilient = stats.Where(s => s.OperationType == ControllerOperation.Resilient && s.Framework == framework && !s.OperationFailed).ToList();
+            var successfulTransient = stats.Where(s => s.OperationType == ControllerOperation.Transient && s.Framework == framework && !s.OperationFailed).ToList();
 
             return new OperationStatistics
             {
-                TotalResilientRequests = stats.Count(s => s.OperationType == ControllerOperation.Resilient),
-                FailedResilientRequests = stats.Count(s => s.OperationType == ControllerOperation.Resilient && s.OperationFailed),
+                TotalResilientRequests = stats.Count(s => s.OperationType == ControllerOperation.Resilient && s.Framework == framework),
+                FailedResilientRequests = stats.Count(s => s.OperationType == ControllerOperation.Resilient && s.Framework == framework && s.OperationFailed),
                 AverageResilientRequests = successfulResilient.Any() ? successfulResilient.Average(s => s.SecondsElapsed) : 0,
-                TotalTransientRequests = stats.Count(s => s.OperationType == ControllerOperation.Transient),
-                FailedTransientRequests = stats.Count(s => s.OperationType == ControllerOperation.Transient && s.OperationFailed),
+                TotalTransientRequests = stats.Count(s => s.OperationType == ControllerOperation.Transient && s.Framework == framework),
+                FailedTransientRequests = stats.Count(s => s.OperationType == ControllerOperation.Transient && s.Framework == framework && s.OperationFailed),
                 AverageTransientRequests = successfulTransient.Any() ? successfulTransient.Average(s => s.SecondsElapsed) : 0,
             };
         }

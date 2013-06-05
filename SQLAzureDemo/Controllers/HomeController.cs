@@ -14,7 +14,18 @@ namespace SQLAzureDemo.Controllers
 
         public ActionResult Index()
         {
-            return View(_statisticsService.GetStatistics());
+            return View(new StatisticsViewModel
+                {
+                    NHibernate = _statisticsService.GetStatistics(ControllerOperation.NHibernate),
+                    EntityFramework = _statisticsService.GetStatistics(ControllerOperation.EntityFramework)
+                }
+            );
         }
+    }
+
+    public class StatisticsViewModel
+    {
+        public OperationStatistics NHibernate { get; set; }
+        public OperationStatistics EntityFramework { get; set; }
     }
 }

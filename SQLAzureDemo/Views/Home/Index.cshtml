@@ -1,4 +1,4 @@
-﻿@model SQLAzureDemo.Controllers.Services.OperationStatistics
+﻿@model SQLAzureDemo.Controllers.StatisticsViewModel
 
 @{
     ViewBag.Title = "SQL Azure Demo";
@@ -6,13 +6,26 @@
 
 <h1>SQL Azure Demo</h1>
 
+<h2>NHibernate</h2>
 <div class="row-fluid">
     <div class="span6">
-        <h2>@(Model.TotalResilientRequests-Model.FailedResilientRequests)/@Model.TotalResilientRequests</h2>
-        <p>Successful requests in the last 5 minutes <strong>with transient protection</strong> having an average time of @Model.AverageResilientRequests seconds.</p>
+        <h2>@(Model.NHibernate.TotalResilientRequests-Model.NHibernate.FailedResilientRequests)/@Model.NHibernate.TotalResilientRequests</h2>
+        <p>Successful requests in the last 5 minutes <strong>with transient protection</strong> having an average time of @Model.NHibernate.AverageResilientRequests seconds.</p>
     </div>
     <div class="span6">
-        <h2>@(Model.TotalTransientRequests-Model.FailedTransientRequests)/@Model.TotalTransientRequests</h2>
-        <p>Successful requests in the last 5 minutes <strong>without transient protection</strong> having an average time of @Model.AverageTransientRequests seconds.</p>
+        <h2>@(Model.NHibernate.TotalTransientRequests-Model.NHibernate.FailedTransientRequests)/@Model.NHibernate.TotalTransientRequests</h2>
+        <p>Successful requests in the last 5 minutes <strong>without transient protection</strong> having an average time of @Model.NHibernate.AverageTransientRequests seconds.</p>
+    </div>
+</div>
+
+<h2>EntityFramework</h2>
+<div class="row-fluid">
+    <div class="span6">
+        <h2>@(Model.EntityFramework.TotalResilientRequests-Model.EntityFramework.FailedResilientRequests)/@Model.EntityFramework.TotalResilientRequests</h2>
+        <p>Successful requests in the last 5 minutes <strong>with transient protection</strong> having an average time of @Model.EntityFramework.AverageResilientRequests seconds.</p>
+    </div>
+    <div class="span6">
+        <h2>@(Model.EntityFramework.TotalTransientRequests-Model.EntityFramework.FailedTransientRequests)/@Model.EntityFramework.TotalTransientRequests</h2>
+        <p>Successful requests in the last 5 minutes <strong>without transient protection</strong> having an average time of @Model.EntityFramework.AverageTransientRequests seconds.</p>
     </div>
 </div>
