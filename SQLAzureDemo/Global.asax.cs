@@ -5,7 +5,6 @@ using System.Web.Routing;
 using Autofac.Integration.Mvc;
 using Microsoft.WindowsAzure.Storage;
 using SQLAzureDemo.App_Start;
-using SQLAzureDemo.App_Start.Serilog;
 using SQLAzureDemo.Database.Migrations;
 using Serilog;
 using StackExchange.Exceptional;
@@ -25,7 +24,7 @@ namespace SQLAzureDemo
             var container = AutofacConfig.BuildContainer(connectionString, azureStorage);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.AzureTable(azureStorage)
+                .WriteTo.AzureTableStorage(azureStorage)
                 .CreateLogger();
             Migrate.Database(connectionString);
         }

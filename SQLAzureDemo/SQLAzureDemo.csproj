@@ -81,11 +81,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NHibernate.SqlAzure.1.0.0.37\lib\NET40\NHibernate.SqlAzure.dll</HintPath>
     </Reference>
-    <Reference Include="Serilog">
-      <HintPath>..\packages\Serilog.0.2.4\lib\net45\Serilog.dll</HintPath>
-    </Reference>
-    <Reference Include="Serilog.FullNetFx">
-      <HintPath>..\packages\Serilog.0.2.4\lib\net45\Serilog.FullNetFx.dll</HintPath>
+    <Reference Include="Serilog.Sinks.AzureTableStorage">
+      <HintPath>..\packages\Serilog.Sinks.AzureTableStorage.0.5.2\lib\net45\Serilog.Sinks.AzureTableStorage.dll</HintPath>
     </Reference>
     <Reference Include="Serilog.Web">
       <HintPath>..\packages\Serilog.Web.0.2.1\lib\net45\Serilog.Web.dll</HintPath>
@@ -183,9 +180,6 @@
     <Compile Include="App_Start\NHibernate\NHibernateConfiguration.cs" />
     <Compile Include="App_Start\NHibernate\TransientRetry.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Serilog\AzureTableStorageSink.cs" />
-    <Compile Include="App_Start\Serilog\ExceptionExtensions.cs" />
-    <Compile Include="App_Start\Serilog\LoggerConfigurationAzureTableStorageExtensions.cs" />
     <Compile Include="Controllers\ResilientController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

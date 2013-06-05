@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using Microsoft.Practices.TransientFaultHandling;
 using Microsoft.WindowsAzure.Storage.Table;
-using SQLAzureDemo.App_Start.Serilog;
 
 namespace SQLAzureDemo.App_Start.NHibernate
 {
@@ -18,7 +17,7 @@ namespace SQLAzureDemo.App_Start.NHibernate
 
             Delay = eventArgs.Delay.ToString();
             RetryCount = eventArgs.CurrentRetryCount;
-            Exception = lastException.TraceInformation();
+            Exception = lastException.ToString();
             ExceptionMessage = lastException.Message;
                 
             Url = HttpContext.Current.Request.Url.ToString();
