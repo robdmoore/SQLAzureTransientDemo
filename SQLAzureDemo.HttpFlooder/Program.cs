@@ -14,17 +14,25 @@ namespace SQLAzureDemo.HttpFlooder
         private static readonly Regex Regex = new Regex(@"There are <span class=""label label-info"">(\d+)</span> that were returned with an average creation year of <span class=""label label-info"">(\d+)</span>");
         static void Main()
         {
-            const int noOfRequests = 300;
+            const int noOfRequests = 304;
             var urls = new[]
             {
-                "http://mscloudperthdemo1.azurewebsites.net/Transient?q={0}&page={1}",
-                "http://mscloudperthdemo2.azurewebsites.net/Transient?q={0}&page={1}",
-                "http://mscloudperthdemo3.azurewebsites.net/Transient?q={0}&page={1}",
-                "http://mscloudperthdemo4.azurewebsites.net/Transient?q={0}&page={1}",
-                "http://mscloudperthdemo1.azurewebsites.net/Resilient?q={0}&page={1}",
-                "http://mscloudperthdemo2.azurewebsites.net/Resilient?q={0}&page={1}",
-                "http://mscloudperthdemo3.azurewebsites.net/Resilient?q={0}&page={1}",
-                "http://mscloudperthdemo4.azurewebsites.net/Resilient?q={0}&page={1}"
+                "http://mscloudperthdemo1.azurewebsites.net/TransientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo2.azurewebsites.net/TransientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo3.azurewebsites.net/TransientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo4.azurewebsites.net/TransientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo1.azurewebsites.net/ResilientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo2.azurewebsites.net/ResilientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo3.azurewebsites.net/ResilientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo4.azurewebsites.net/ResilientNHibernate?q={0}&page={1}",
+                "http://mscloudperthdemo1.azurewebsites.net/TransientEntityFramework?q={0}&page={1}",
+                "http://mscloudperthdemo2.azurewebsites.net/TransientEntityFramework?q={0}&page={1}",
+                "http://mscloudperthdemo3.azurewebsites.net/TransientEntityFramework?q={0}&page={1}",
+                "http://mscloudperthdemo4.azurewebsites.net/TransientEntityFramework?q={0}&page={1}",
+                "http://mscloudperthdemo1.azurewebsites.net/ResilientEntityFramework?q={0}&page={1}",
+                "http://mscloudperthdemo2.azurewebsites.net/ResilientEntityFramework?q={0}&page={1}",
+                "http://mscloudperthdemo3.azurewebsites.net/ResilientEntityFramework?q={0}&page={1}",
+                "http://mscloudperthdemo4.azurewebsites.net/ResilientEntityFramework?q={0}&page={1}"
             };
             ServicePointManager.DefaultConnectionLimit = 500;
             ServicePointManager.MaxServicePointIdleTime = 5*60*1000;

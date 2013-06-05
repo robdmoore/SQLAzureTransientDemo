@@ -1,6 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Data.Common;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure;
 using SQLAzureDemo.Database.Models;
 
 namespace SQLAzureDemo.App_Start.EntityFramework
@@ -13,7 +13,7 @@ namespace SQLAzureDemo.App_Start.EntityFramework
     public class ModelContext : DbContext, IModelContext
     {
         public ModelContext(string connectionString) : base(connectionString) { }
-        public ModelContext(ReliableSqlConnection reliableSqlConnection) : base(reliableSqlConnection.Current, true) { }
+        public ModelContext(DbConnection dbConnection) : base(dbConnection, true) { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Data.Common;
 using Autofac;
 using Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure;
 using Microsoft.Practices.TransientFaultHandling;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using NHibernate.SqlAzure;
 using NHibernate.SqlAzure.RetryStrategies;
 using SQLAzureDemo.App_Start.EntityFramework;
 using Autofac.Integration.Mvc;
@@ -42,7 +43,7 @@ namespace SQLAzureDemo.App_Start.Autofac
                 .InstancePerHttpRequest();
         }
 
-        private ReliableSqlConnection GetReliableConnection()
+        private DbConnection GetReliableConnection()
         {
             var connectionRetry = new ExponentialBackoff("Backoff Retry Strategy", 10, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(10), false);
             var commandRetry = new Incremental("Incremental Retry Strategy", 10, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
@@ -55,7 +56,7 @@ namespace SQLAzureDemo.App_Start.Autofac
             connection.CommandRetryPolicy.Retrying += (e, args) => _table.Execute(TableOperation.Insert(new TransientRetry(args)));
             connection.ConnectionRetryPolicy.Retrying += (e, args) => _table.Execute(TableOperation.Insert(new TransientRetry(args)));
 
-            return connection;
+            return new ReliableSqlDbConnection(connection);
         }
     }
 }
