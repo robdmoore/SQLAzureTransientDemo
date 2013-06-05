@@ -81,6 +81,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NHibernate.SqlAzure.1.0.0.37\lib\NET40\NHibernate.SqlAzure.dll</HintPath>
     </Reference>
+    <Reference Include="Serilog, Version=0.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Serilog.0.5.4\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx, Version=0.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Serilog.0.5.4\lib\net45\Serilog.FullNetFx.dll</HintPath>
+    </Reference>
     <Reference Include="Serilog.Sinks.AzureTableStorage">
       <HintPath>..\packages\Serilog.Sinks.AzureTableStorage.0.5.2\lib\net45\Serilog.Sinks.AzureTableStorage.dll</HintPath>
     </Reference>
