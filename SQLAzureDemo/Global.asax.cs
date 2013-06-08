@@ -18,6 +18,7 @@ namespace SQLAzureDemo
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
             var azureStorage = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString);
+
             ErrorStore.Setup("SQLAzureDemo", new SQLErrorStore(connectionString));
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

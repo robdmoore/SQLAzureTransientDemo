@@ -189,6 +189,14 @@
     <Compile Include="App_Start\Autofac\ServicesModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EntityFramework\ModelContext.cs" />
+    <Compile Include="App_Start\EntityFramework\ReliableDbCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Start\EntityFramework\ReliableDbProviderServices.cs" />
+    <Compile Include="App_Start\EntityFramework\ReliableSqlClientProvider.cs" />
+    <Compile Include="App_Start\EntityFramework\ReliableSqlDbConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="App_Start\NHibernate\LoggingSqlAzureClientDriverWithTimeoutRetries.cs" />
     <Compile Include="App_Start\NHibernate\NHibernateConfiguration.cs" />
     <Compile Include="App_Start\NHibernate\TransientRetry.cs" />
