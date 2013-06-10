@@ -13,13 +13,13 @@ namespace SQLAzureDemo.App_Start.Autofac
 {
     public class EntityFrameworkModule : Module
     {
+        private readonly string _connectionString;
         public const string TransientConnection = "eftransient";
         public const string ResilientConnection = "efresilient";
-        public const string ReliableConnectionStringName = "ReliableDatabase";
-        public const string TransientConnectionStringName = "Database";
 
-        public EntityFrameworkModule(CloudStorageAccount storageAccount)
+        public EntityFrameworkModule(string connectionString, CloudStorageAccount storageAccount)
         {
+            _connectionString = connectionString;
             var tableClient = storageAccount.CreateCloudTableClient();
             var table = tableClient.GetTableReference(typeof(TransientRetry).Name);
             table.CreateIfNotExists();
@@ -31,11 +31,13 @@ namespace SQLAzureDemo.App_Start.Autofac
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => new ModelContext(TransientConnectionStringName))
+            builder.Register(c => new ModelContext(_connectionString))
                 .Keyed<IModelContext>(TransientConnection)
                 .InstancePerHttpRequest();
 
-            builder.Register(c => new ModelContext(ReliableConnectionStringName))
+            var reliableConnection = SqlAzureProvider.Instance.CreateConnection();
+            reliableConnection.ConnectionString = _connectionString;
+            builder.Register(c => new ModelContext(reliableConnection))
                 .Keyed<IModelContext>(ResilientConnection)
                 .InstancePerHttpRequest();
         }
