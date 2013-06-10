@@ -71,6 +71,32 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling">
+      <HintPath>..\packages\EnterpriseLibrary.WindowsAzure.TransientFaultHandling.5.1.1212.0\lib\NET4\Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.TransientFaultHandling.Core">
+      <HintPath>..\packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+      <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
@@ -82,7 +108,10 @@
     </Reference>
     <Reference Include="NHibernate.SqlAzure, Version=1.0.0.37, Culture=neutral, PublicKeyToken=bb07ae0f952b17ee, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NHibernate.SqlAzure.1.0.0.37\lib\NET40\NHibernate.SqlAzure.dll</HintPath>
+      <HintPath>..\packages\NHibernate.SqlAzure.Standalone.1.0.0.37\lib\NET40\NHibernate.SqlAzure.dll</HintPath>
+    </Reference>
+    <Reference Include="ReliableDbProvider">
+      <HintPath>..\packages\ReliableDbProvider.Standalone.0.9.3\lib\NET40\ReliableDbProvider.dll</HintPath>
     </Reference>
     <Reference Include="Serilog, Version=0.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -189,14 +218,6 @@
     <Compile Include="App_Start\Autofac\ServicesModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EntityFramework\ModelContext.cs" />
-    <Compile Include="App_Start\EntityFramework\ReliableDbCommand.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="App_Start\EntityFramework\ReliableDbProviderServices.cs" />
-    <Compile Include="App_Start\EntityFramework\ReliableSqlClientProvider.cs" />
-    <Compile Include="App_Start\EntityFramework\ReliableSqlDbConnection.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="App_Start\NHibernate\LoggingSqlAzureClientDriverWithTimeoutRetries.cs" />
     <Compile Include="App_Start\NHibernate\NHibernateConfiguration.cs" />
     <Compile Include="App_Start\NHibernate\TransientRetry.cs" />
