@@ -35,9 +35,11 @@ namespace SQLAzureDemo.App_Start.Autofac
                 .Keyed<IModelContext>(TransientConnection)
                 .InstancePerHttpRequest();
 
-            var reliableConnection = SqlAzureProvider.Instance.CreateConnection();
-            reliableConnection.ConnectionString = _connectionString;
-            builder.Register(c => new ModelContext(reliableConnection))
+            builder.Register(c => {
+                    var reliableConnection = SqlAzureProvider.Instance.CreateConnection();
+                    reliableConnection.ConnectionString = _connectionString;
+                    return new ModelContext(reliableConnection);
+                })
                 .Keyed<IModelContext>(ResilientConnection)
                 .InstancePerHttpRequest();
         }
