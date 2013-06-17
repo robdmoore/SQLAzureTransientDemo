@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Mvc;
 using SQLAzureDemo.Controllers.Services;
 
 namespace SQLAzureDemo.Controllers
@@ -20,6 +21,15 @@ namespace SQLAzureDemo.Controllers
                     EntityFramework = _statisticsService.GetStatistics(ControllerOperation.EntityFramework)
                 }
             );
+        }
+
+        public ActionResult Diagnose()
+        {
+            foreach (ConnectionStringSettings connectionString in ConfigurationManager.ConnectionStrings)
+            {
+                Response.Write("<p>" + connectionString.Name + ": " + connectionString.ProviderName + "</p>");
+            }
+            return new EmptyResult();
         }
     }
 
