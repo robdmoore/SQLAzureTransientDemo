@@ -18,8 +18,10 @@ The website provides a number of search pages over this database that perform a 
 The website provides a number of HTTP endpoints (note: the [] denotes an optional component of the URL):
 
 * `/` - Dashboard of the status of the demo in the last 5 minutes
-* `/Transient[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies in a non-transient protected way using NHibernate
-* `/Resilient[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies in a transient protected way using the [NHibernate.SqlAzure](https://github.com/robdmoore/NHibernate.SqlAzure) library
+* `/TransientNHibernate[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies using NHibernate in a non-transient protected
+* `/ResilientNHibernate[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies using NHibernate in a transient protected way using the [NHibernate.SqlAzure](https://github.com/robdmoore/NHibernate.SqlAzure) library
+* `/TransientEntityFramework[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies using EntityFramework in a non-transient protected way
+* `/ResilientEntityFramework[?q=${SEARCH_TERM}[&page=${PAGE}]]` - Search for movies using EntityFramework in a transient protected way using the [ReliableDbProvider](https://github.com/robdmoore/ReliableDbProvider) library
 
 How do I set-up and run the demo?
 ---------------------------------
