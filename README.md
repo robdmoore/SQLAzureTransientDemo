@@ -10,7 +10,7 @@ The demo consists of a website that allows the user to search for movies within 
 
 The database was [populated by](SQLAzureDemo/Database/Migrations):
 
-1. Grabbing the top 10 results from the [IMDB API](http://imdbapi.org) for movies starting with 0-9 and a-z (returns 360 records)
+1. Grabbing the top 10 results from the [OMDB API](http://omdbapi.com) for movies starting with 0-9 and a-z (returns 360 records)
 2. Combinatorially combining the results together - concatenating the titles and adding the year of creation - to quickly generate a large number of records
 
 The website provides a number of search pages over this database that perform a contains search over the title for a given search term and present a paginated table of results.
