@@ -18,7 +18,7 @@ namespace SQLAzureDemo.Database.Migrations
             var movies = new List<Movie>();
             foreach (var titleSearch in titleSearches)
             {
-                var result = client.GetStringAsync(string.Format("http://imdbapi.org/?limit=10&title={0}&type=json", titleSearch)).Result;
+                var result = client.GetStringAsync(string.Format("http://omdbapi.org/?limit=10&title={0}&type=json", titleSearch)).Result;
                 movies.AddRange(JsonConvert.DeserializeObject<Movie[]>(result));
             }
 
