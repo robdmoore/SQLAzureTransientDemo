@@ -29,8 +29,12 @@ namespace SQLAzureDemo.Database.Migrations
             var movies = new List<MovieJson>();
             foreach (var titleSearch in titleSearches)
             {
-                var result = client.GetStringAsync(string.Format("http://omdbapi.com/?s={0}%20", titleSearch)).Result;
-                movies.AddRange(JsonConvert.DeserializeObject<SearchJson>(result).Search);
+                var result = client.GetStringAsync(string.Format("http://omdbapi.com/?s={0}{0}", titleSearch)).Result;
+                var resultObject = JsonConvert.DeserializeObject<SearchJson>(result).Search;
+                if (resultObject != null)
+                {
+                    movies.AddRange(resultObject);
+                }
             }
 
             using (var command = connection.CreateCommand())
